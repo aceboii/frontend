@@ -17,8 +17,8 @@ export const navItems = [
       url: "/events",
     },
     {
-      title: "FAQ",
-      url: "/faq",
+      title: "Blog",
+      url: "/blog",
     },
   ];
   

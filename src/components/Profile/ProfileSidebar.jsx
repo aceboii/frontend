@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineLogin, AiOutlineMessage } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
+import { HiOutlineReceiptRefund, HiOutlineShoppingBag, HiOutlinePencil } from "react-icons/hi";
 import {
   MdOutlineAdminPanelSettings,
   MdOutlinePassword,
@@ -45,6 +45,16 @@ const ProfileSidebar = ({ setActive, active }) => {
           Profile
         </span>
       </div>
+      <Link to="/write-blog" className="flex items-center cursor-pointer w-full mb-8">
+        <HiOutlinePencil size={20} color={active === 2 ? "red" : ""} />
+        <span
+          className={`pl-3 ${
+            active === 2 ? "text-[red]" : ""
+          } 800px:block hidden`}
+        >
+          Write Blog
+        </span>
+      </Link>
       <div
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(2)}

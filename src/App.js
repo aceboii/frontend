@@ -9,7 +9,6 @@ import {
   ProductsPage,
   BestSellingPage,
   EventsPage,
-  FAQPage,
   CheckoutPage,
   PaymentPage,
   OrderSuccessPage,
@@ -60,6 +59,11 @@ import axios from "axios";
 import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import WriteBlog from "./pages/WriteBlog";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import EditBlog from "./pages/EditBlog";
+import ProductComparePage from "./pages/ProductComparePage";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -106,9 +110,13 @@ const App = () => {
         />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
+        <Route path="/product/compare/:one/:two" element={<ProductComparePage />} />
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/write-blog" element={<WriteBlog />} />
+        <Route path="/edit-blog/:id" element={<EditBlog />} />
         <Route
           path="/checkout"
           element={

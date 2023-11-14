@@ -25,6 +25,7 @@ const Header = ({ activeHeading }) => {
   const { allProducts } = useSelector((state) => state.products);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
+  const [show, setShow] = useState(false);
   const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
@@ -58,7 +59,9 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                style={{height: "66px", width: "120px"}}
+                // src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src="/Images/logo.gif"
                 alt=""
               />
             </Link>
@@ -70,13 +73,15 @@ const Header = ({ activeHeading }) => {
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
+              onFocus={() => setShow(true)}
+              onBlur={() => setShow(false)}
               className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
             />
             <AiOutlineSearch
               size={30}
               className="absolute right-2 top-1.5 cursor-pointer"
             />
-            {searchData && searchData.length !== 0 ? (
+            {show && searchData && searchData.length !== 0 ? (
               <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData &&
                   searchData.map((i, index) => {
@@ -272,9 +277,11 @@ const Header = ({ activeHeading }) => {
                   placeholder="Search Product..."
                   className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
                   value={searchTerm}
+                  onFocus={() => setShow(true)}
+                  onBlur={() => setShow(false)}
                   onChange={handleSearchChange}
                 />
-                {searchData && (
+                {show && searchData && (
                   <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
                     {searchData.map((i) => {
                       const d = i.name;
